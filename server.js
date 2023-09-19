@@ -1,7 +1,16 @@
 const express = require('express')
+const basicAuth = require('express-basic-auth')
 const app = express()
 const port = process.env.PORT || 3000
-app.use(express.json())
+app.use(express.json(),
+    basicAuth({
+        users: {
+            'john': 'superSecret',
+            'elise': '12345678',
+        },
+        challenge: true
+    })
+)
 
 // Une liste d'exemple de livres, qui pourrait être récupérée en base de données
 const books = [
