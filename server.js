@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express()
 const jwt = require('jsonwebtoken')
-const e_jwt = require('express-jwt');
+const e_jwt = require('express-jwt').expressjwt;;
 
 const SECRET = 'S3cr3tK3yD0ntSh4r31t'
 
@@ -109,7 +109,7 @@ app.delete('/books/:isbn', (req, res) => {
 
     res.json(books)
 })
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log('Serveur démarré')
 })
